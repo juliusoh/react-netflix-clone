@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import './LoginScreen.css';
+import React, { useState } from "react";
+import "./LoginScreen.css";
+import SignUpScreen from "./SignUpScreen";
 
 const LoginScreen = () => {
   const [signIn, setSignIn] = useState(false);
@@ -18,19 +19,30 @@ const LoginScreen = () => {
       </button>
       <div className="loginScreen__gradient"></div>
       <div className="loginScreen__body">
-        <>
-          <h1>Unlimited movies, TV shows, and more.</h1>
-          <h2>Watch anywhere. Cancel anytime.</h2>
-          <h3>Ready to watch? Enter your email to create or restart your membership.</h3>
+        {signIn ? (
+          <SignUpScreen />
+        ) : (
+          <>
+            <h1>Unlimited movies, TV shows, and more.</h1>
+            <h2>Watch anywhere. Cancel anytime.</h2>
+            <h3>
+              Ready to watch? Enter your email to create or restart your
+              membership.
+            </h3>
 
-          <div className="loginScreen__input">
-            <form action="">
-              <input type="email" placeholder="Email address" />
-              <button
-                className="loginScreen__getStarted">Get Started</button>
-            </form>
-          </div>
-        </>
+            <div className="loginScreen__input">
+              <form action="">
+                <input type="email" placeholder="Email address" />
+                <button
+                  onClick={() => setSignIn(true)}
+                  className="loginScreen__getStarted"
+                >
+                  Get Started
+                </button>
+              </form>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
